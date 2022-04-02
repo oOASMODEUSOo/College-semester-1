@@ -1,0 +1,6 @@
+C programmes:
+1, Write a program in C to show that 
+Right shift effectively divides a 
+number by 2 and a left shift effectively 
+multiplies a number by 2
+
