@@ -1,0 +1,5 @@
+def aboutMoksha():
+    print("Moksha is the annual inter-college cultural festival of Netaji Subhas University of Technology. Started in 2003, it is organized in the month of March. It is a four-day national extravaganza held every even semester of the academic year. It is considered to be one of the biggest cultural fests in north India & attracts sponsorships from top corporate houses of India including TCS, Intel and Airtel.")
+
+def aboutInnovasion():
+    print("Innovision is the annual inter-college, techno-managerial fest of Netaji Subhas University of Technology, which was conceived in 2002 as solely a technological fest. But as the years sped by, the vision expanded to contain not just technological events but managerial events as well. Today, NSUT conducts Innovision as a two day extravaganza of a line-up of approximately 50 events with an expected footfall of around 4000 people. The events organized are diverse, ranging from electronics & programming to bike shows, debates & case studies.")
