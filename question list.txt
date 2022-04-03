@@ -1,6 +1,7 @@
 C programmes:
-1, Write a program in C to show that 
-Right shift effectively divides a 
-number by 2 and a left shift effectively 
-multiplies a number by 2
+1, Write a program in C to show that Right shift effectively divides a number by 2 and a left shift effectively multiplies a number by 2
 
+Python programmes:
+1. Build a collection of employee records, You may use data structures with any combination of built in object types (lists, tuples, dictionaries, strings, numbers). Then access and modify the individual records and individual components of data structure using indexing
+
+2. Use lambda, map and filter functions to find the sum of cubes of first 5 even numbers
