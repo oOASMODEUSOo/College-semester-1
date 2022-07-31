@@ -3,7 +3,6 @@
 using namespace std;
 
 class Stack{
-    //variable and stuff
     public:
         int *stk;
         int size;
@@ -21,7 +20,7 @@ class Stack{
             stk[top] = element;
         }
         else{
-            cout << "kitna element thusega bhai?";
+            cout << "overflow";
         }
     }
 
@@ -31,7 +30,7 @@ class Stack{
             this->top = top - 1;
         }
         else{
-            cout << "Khali pada hai";
+            cout << "empty";
         }
     }
 
@@ -39,7 +38,7 @@ class Stack{
         if (top > -1)
             cout << stk[top];
         else{
-            cout << "khali kuan me kya dekh ra hai";
+            cout << "empty";
         }
     }
 

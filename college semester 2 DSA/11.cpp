@@ -1,15 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
-// Node structure containing power and coefficient of
-// variable
+
 struct Node {
     int coeff;
     int pow;
     struct Node* next;
 };
- 
-// Function to create new node
+
 void create_node(int x, int y, struct Node** temp)
 {
     struct Node *r, *z;
@@ -31,38 +28,30 @@ void create_node(int x, int y, struct Node** temp)
         r->next = NULL;
     }
 }
- 
-// Function Adding two polynomial numbers
+
 void polyadd(struct Node* poly1, struct Node* poly2,
              struct Node* poly)
 {
     while (poly1->next && poly2->next) {
-        // If power of 1st polynomial is greater then 2nd,
-        // then store 1st as it is and move its pointer
         if (poly1->pow > poly2->pow) {
             poly->pow = poly1->pow;
             poly->coeff = poly1->coeff;
             poly1 = poly1->next;
         }
- 
-        // If power of 2nd polynomial is greater then 1st,
-        // then store 2nd as it is and move its pointer
+
         else if (poly1->pow < poly2->pow) {
             poly->pow = poly2->pow;
             poly->coeff = poly2->coeff;
             poly2 = poly2->next;
         }
- 
-        // If power of both polynomial numbers is same then
-        // add their coefficients
+
         else {
             poly->pow = poly1->pow;
             poly->coeff = poly1->coeff + poly2->coeff;
             poly1 = poly1->next;
             poly2 = poly2->next;
         }
- 
-        // Dynamically create new node
+
         poly->next
             = (struct Node*)malloc(sizeof(struct Node));
         poly = poly->next;
@@ -85,8 +74,7 @@ void polyadd(struct Node* poly1, struct Node* poly2,
         poly->next = NULL;
     }
 }
- 
-// Display Linked list
+
 void show(struct Node* node)
 {
     while (node->next != NULL) {
@@ -98,8 +86,7 @@ void show(struct Node* node)
         }
     }
 }
- 
-// Driver code
+
 int main()
 {
     struct Node *poly1 = NULL, *poly2 = NULL, *poly = NULL;
@@ -120,11 +107,9 @@ int main()
     show(poly2);
  
     poly = (struct Node*)malloc(sizeof(struct Node));
- 
-    // Function add two polynomial numbers
+
     polyadd(poly1, poly2, poly);
- 
-    // Display resultant List
+
     printf("\nAdded polynomial: ");
     show(poly);
  

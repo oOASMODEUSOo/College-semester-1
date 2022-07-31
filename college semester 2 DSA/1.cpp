@@ -13,6 +13,7 @@ int findMean(int a[], int n){
 int findMedian(int a[], int n){
     sort(a, a + n);
  
+
     if (n % 2 != 0)
         return (int)a[n / 2];
  

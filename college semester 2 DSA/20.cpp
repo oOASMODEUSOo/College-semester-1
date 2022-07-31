@@ -15,84 +15,85 @@ class node{
     }
 };
 
-void buildFromLevel(node* &root){   //this function just builds the tree level by level
-    queue<node*> q;                 //created a queue 
-    cout << "enter data for root";  //asking for the data
-    int data;                       //data variable
-    cin >> data;                    //inputing
-    root = new node(data);          //root was a null pointer and now we called the node constructor inside it
-    q.push(root);                   //pushing the root inside the queue
+void buildFromLevel(node* &root){   
+    queue<node*> q;                 
+    cout << "enter data for root";  
+    int data;                       
+    cin >> data;                    
+    root = new node(data);          
+    q.push(root);                   
  
-    while (!q.empty()){             //condition to check the empty queue
-        node* temp = q.front();     //put the peek element into the queue 
-        q.pop();                    //and remove that element from the queue
+    while (!q.empty()){             
+        node* temp = q.front();     
+        q.pop();                    
  
         cout << "Enter left node for: " << temp->data << endl;
         int leftData;
-        cin >> leftData;            //taking the data for the left side of the root node
+        cin >> leftData;            
 
-        if (leftData != -1){        //if the data entered is not null
-            temp->left = new node(leftData);    //then call the constructor for the NULL
-            q.push(temp->left);     //pushing the element into the queue
+        if (leftData != -1){        
+            temp->left = new node(leftData);    
+            q.push(temp->left);     
         }
 
-        cout << "Enter right node for: " << temp->data << endl;  //asking for the data in the right 
+        cout << "Enter right node for: " << temp->data << endl;   
         int rightData;  
-        cin >> rightData;           //inputing the data
+        cin >> rightData;           
 
-        if (rightData != -1){       //if the data entered is not null
+        if (rightData != -1){      
             temp->right = new node(rightData);  
             q.push(temp->right);
         }
     }
-    
 }
 
-void inOrder(node* root){   //LNR  L is go left N is node(print) R is go right
+void inOrder(node* root){   
     //base case
-    if (root == NULL){      //base case says that if we find a NULL then just exit out of the function 
+    if (root == NULL){       
         return;
     }
 
-    inOrder(root->left);    //this recursive call keeps traversing to left side
-    cout << root->data;     //when the recursive call fails then it prints the value of the node
-    inOrder(root->right);   //this recursive call keeps traversing to the right side of the node
+    inOrder(root->left);    
+    cout << root->data;     
+    inOrder(root->right);   
 }
 
-void postOrder(node* root){ //LRN  L is go left R is go right N is node(print)
+void postOrder(node* root){ 
     //base case
-    if (root == NULL){      //base case says that if we find a NULL then just exit out of the function
+    if (root == NULL){      
         return;
     }
 
-    postOrder(root->left);  //this recursive call keeps traversing to left side
-    postOrder(root->right); //this recursive call keeps traversing to the right side of the node
-    cout << root->data;     //when the recursive call fails then it prints the value of the node
+    postOrder(root->left);  
+    postOrder(root->right); 
+    cout << root->data;     
 }
 
-void preOrder(node* root){  //NLR  N is node(print) L is go left R is go right
+void preOrder(node* root){  
     //base case
-    if (root == NULL){      //base case says that if we find a NULL then just exit out of the function
+    if (root == NULL){      
         return;
     }
 
-    cout << root->data;     //when the recursive call fails then it prints the value of the node
-    preOrder(root->left);   //this recursive call keeps traversing to left side
-    preOrder(root->right);  //this recursive call keeps traversing to the right side of the node
+    cout << root->data;     
+    preOrder(root->left);   
+    preOrder(root->right);  
 }
-
-   
 
 int main(){
     
     //data = 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
 
-    node* root = NULL;  //created an empty NULL ptr of type node 
+    node* root = NULL;  
     buildFromLevel(root);
 
-    cout << "Printing the tree in level Order traversal mode";
+    cout << "Printing the inorder: ";
     inOrder(root);
+    cout << endl;
+    cout << "Printing the postorder: ";
     postOrder(root);
+    cout << endl;
+    cout << "Printing the preorder: ";
     preOrder(root);
 
     return 0;

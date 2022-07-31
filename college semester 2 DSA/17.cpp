@@ -3,10 +3,8 @@ using namespace std;
  
 class Queue
 {
-    // Initialize front and rear
     int rear, front;
- 
-    // Circular Queue
+
     int size;
     int *arr;
 public:
@@ -22,8 +20,6 @@ public:
     void displayQueue();
 };
  
- 
-/* Function to create Circular queue */
 void Queue::enQueue(int value)
 {
     if ((front == 0 && rear == size-1) ||
@@ -33,7 +29,7 @@ void Queue::enQueue(int value)
         return;
     }
  
-    else if (front == -1) /* Insert First Element */
+    else if (front == -1) 
     {
         front = rear = 0;
         arr[rear] = value;
@@ -51,8 +47,7 @@ void Queue::enQueue(int value)
         arr[rear] = value;
     }
 }
- 
-// Function to delete element from Circular Queue
+
 int Queue::deQueue()
 {
     if (front == -1)
@@ -75,9 +70,7 @@ int Queue::deQueue()
  
     return data;
 }
- 
-// Function displaying the elements
-// of Circular Queue
+
 void Queue::displayQueue()
 {
     if (front == -1)
@@ -100,22 +93,15 @@ void Queue::displayQueue()
             printf("%d ", arr[i]);
     }
 }
- 
-/* Driver of the program */
+
 int main()
 {
     Queue q(5);
- 
-    // Inserting elements in Circular Queue
     q.enQueue(14);
     q.enQueue(22);
     q.enQueue(13);
     q.enQueue(-6);
- 
-    // Display elements present in Circular Queue
     q.displayQueue();
- 
-    // Deleting elements from Circular Queue
     printf("\nDeleted value = %d", q.deQueue());
     printf("\nDeleted value = %d", q.deQueue());
  

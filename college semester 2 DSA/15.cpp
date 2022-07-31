@@ -1,104 +1,104 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-class Queue{
-    //data members
-    public:
-        int* queue;
-        int size;
-        int front;
-        int rear;
-
-    //queue constructor
-    Queue(int size){
-        this->size = size;
-        queue = new int[size];
-        this->front = 0;
-        this->rear = -1;
+struct Queue
+{
+    int front, rear, capacity;
+    int *queue;
+    Queue(int c)
+    {
+        front = rear = 0;
+        capacity = c;
+        queue = new int;
     }
 
-    //function related to queue
-    void push(int val){
-        if (rear < size){
-            rear = rear + 1;
-            queue[rear] = val;
+    ~Queue() { delete[] queue; }
+
+    void queueEnqueue(int data)
+    {
+        if (capacity == rear)
+        {
+            printf("\nQueue is full\n");
+            return;
         }
-        
-        else{
-            cout << "bhar gya hai queue" << endl;
+
+        else
+        {
+            queue[rear] = data;
+            rear++;
         }
+        return;
     }
 
-    void pop(){
-        if (queue[front] == 0){
-            cout << "Khali queue me kya jhakta hai?";
+    void queueDequeue()
+    {
+        if (front == rear)
+        {
+            printf("\nQueue is empty\n");
+            return;
         }
 
-        if (rear == 0){     //problem here
-            queue[front] == 0;
-        }
-
-        else{
-            int reverseCounter = rear;
-            for (int i = 0 ; i < reverseCounter ; i++){
-                queue[i] = queue[i+1];
+        else
+        {
+            for (int i = 0; i < rear - 1; i++)
+            {
+                queue[i] = queue[i + 1];
             }
+
+            rear--;
         }
+        return;
     }
 
-    bool isEmpty(){
-        if (queue[front] == 0){
-            return true;
+    void queueDisplay()
+    {
+        int i;
+        if (front == rear)
+        {
+            printf("\nQueue is Empty\n");
+            return;
         }
-        return false;
-    }
 
-    void frontVal(){
-        cout << queue[front] << " ,yahi value hai front element ki" << endl;
-    }
-
-    void showQueue(){
-        for (int i = 0 ; i < size ; i++){
-            cout << queue[i] << endl;
+        for (i = front; i < rear; i++)
+        {
+            printf(" %d <-- ", queue[i]);
         }
+        return;
     }
 
+    void queueFront()
+    {
+        if (front == rear)
+        {
+            printf("\nQueue is Empty\n");
+            return;
+        }
+        printf("\nFront Element is: %d", queue[front]);
+        return;
+    }
 };
 
-int main(){
+// Driver code
+int main(void)
+{
 
-    Queue something(5);
-    something.push(5);
-    something.push(10);
-    something.push(12);
-    something.push(7);
-    something.push(3);
+    Queue q(4);
+    q.queueDisplay();
+    q.queueEnqueue(20);
+    q.queueEnqueue(30);
+    q.queueEnqueue(40);
+    q.queueEnqueue(50);
+    q.queueDisplay();
+    q.queueEnqueue(60);
+    q.queueDisplay();
+    q.queueDequeue();
+    q.queueDequeue();
 
-    cout << "Lets print the queue";
+    printf("\n\nafter two node deletion\n\n");
 
-    something.showQueue();
+    q.queueDisplay();
 
-    cout << "taking a look at the first element: ";
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
-
-    something.pop();
-    something.frontVal();
+    q.queueFront();
 
     return 0;
 }

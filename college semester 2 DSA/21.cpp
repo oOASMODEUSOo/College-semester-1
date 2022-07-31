@@ -42,42 +42,30 @@ void takeInput(node* &root){
     cout << "Tree created successfully" << "\n";
 }
 
-void levelOrderTraversal(node* root);
+void levelOrderTraversal(node* root) {
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
 
-//this is the recursive approach
-bool searchInBST(node* root, int key){
-    //base case
-    if (root == NULL){
-        return false;
-    }
+    while(!q.empty()) {
+        node* temp = q.front();
+        q.pop();
 
-    //found case
-    else if (root->data == key){
-        return true;
-    }
-
-    else{
-        if (root->data > key){
-            return root->right;
+        if(temp == NULL) { 
+            cout << endl;
+            if(!q.empty()) { 
+                q.push(NULL);
+            }  
         }
-        else if (root->data < key){
-            return root->left;
-        }
-    }
-}
+        else{
+            cout << temp -> data << " ";
+            if(temp ->left) {
+                q.push(temp ->left);
+            }
 
-//this is the iterative approach
-bool searchIterWay(node* root, int key){    
-    node* temp = root;
-
-    while (temp!=NULL){
-        if (temp->data == key)
-            return true;
-        else if (temp->data > key){
-            temp = temp->right;
-        }
-        else if (temp->data < key){
-            temp = temp->left;
+            if(temp ->right) {
+                q.push(temp ->right);
+            }
         }
     }
 }
@@ -113,13 +101,12 @@ node* deleteInBST(node* root, int key){
             return temp;
         }
         //2child
-        if (root->left != NULL and root->right != NULL){  //we have 2 options, left mese max value utha lo or right mese minimum value utha lo
+        if (root->left != NULL and root->right != NULL){  
             int minValue =  minVal(root)->data;
             root->data = minValue;
             root->right = deleteInBST(root->right, minValue);
             return root;
         }
-
     }
     else if(root->data > key){
         root->left = deleteInBST(root->left, key);
@@ -132,46 +119,10 @@ node* deleteInBST(node* root, int key){
 }
 
 int main(){
-    
     node* root = NULL;
-
     takeInput(root);
-
     levelOrderTraversal(root);
-
-    bool ifFound = searchInBST(root, 4);
-
     insertIntoBST(root, 5);
-
     levelOrderTraversal(root);
-
     return 0;
-}
-
-void levelOrderTraversal(node* root) {
-    queue<node*> q;
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()) {
-        node* temp = q.front();
-        q.pop();
-
-        if(temp == NULL) { 
-            cout << endl;
-            if(!q.empty()) { 
-                q.push(NULL);
-            }  
-        }
-        else{
-            cout << temp -> data << " ";
-            if(temp ->left) {
-                q.push(temp ->left);
-            }
-
-            if(temp ->right) {
-                q.push(temp ->right);
-            }
-        }
-    }
 }

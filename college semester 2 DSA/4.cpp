@@ -1,6 +1,5 @@
 #include <iostream>  
-#include <iostream>  
-     
+using namespace std;
 int main()    
 {    
     //Initialize array     
@@ -13,7 +12,7 @@ int main()
     //Displaying elements of original array    
     cout << "Elements of original array: \n";    
     for (int i = 0; i < length; i++) {     
-        cout << arr[i];    
+        cout << arr[i] << " ";    
     }      
         
     //Sort the array in ascending order    
@@ -32,7 +31,7 @@ int main()
     //Displaying elements of array after sorting    
     printf("Elements of array sorted in ascending order: \n");    
     for (int i = 0; i < length; i++) {     
-        printf("%d ", arr[i]);    
+        cout << arr[i] << " ";    
     }    
     return 0;    
 }   
